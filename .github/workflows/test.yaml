@@ -44,11 +44,8 @@ jobs:
           sudo mv migrate.linux-amd64 /usr/bin/migrate
           which migrate
 
-      - name: Export db url
-        run: export TEST_DATABASE_URL="postgresql://root:1qaz@!QAZ@localhost:5432/simple_bank?sslmode=disable"
-
       - name: Run migrations
-        run: migrate -path db/migration -database "$TEST_DATABASE_URL" -verbose up
+        run: make migrateUp
 
       - name: Test
         run: make test
