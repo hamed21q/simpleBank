@@ -1,4 +1,4 @@
-DB_URL=postgresql://root:1qaz@localhost:5432/simple_bank
+DB_URL=postgresql://root:1qaz@localhost:5432/simple_bank?sslmode=disable
 
 postgres:
 	sudo docker run --name postgres  -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=1qaz -d postgres
