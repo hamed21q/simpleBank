@@ -2,7 +2,6 @@ package db
 
 import (
 	"context"
-	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -27,7 +26,6 @@ func TestTransferTx(t *testing.T) {
 				ToAccountID:   account2.ID,
 				Amount:        amount,
 			})
-			fmt.Println(">> tx:", result.FromAccount.Balance, result.ToAccount.Balance)
 			errs <- err
 			results <- result
 		}()
