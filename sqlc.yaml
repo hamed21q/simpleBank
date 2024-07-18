@@ -1,4 +1,5 @@
 version: "2"
+
 sql:
   - engine: "postgresql"
     queries: "./db/query"
@@ -7,3 +8,4 @@ sql:
       go:
         package: "db"
         out: "./db/sqlc"
+        emit_empty_slices: true
