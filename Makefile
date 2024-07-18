@@ -1,5 +1,5 @@
 postgres:
-	docker run --name postgres14 -p 5420:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=1qaz -d focker.ir/postgres:12-alpine
+	docker run --name postgres14 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=1qaz -d focker.ir/postgres:12-alpine
 
 createdb:
 	docker exec -it postgres14 createdb --username=root --owner=root simple_bank
@@ -19,5 +19,8 @@ sqlc:
 test:
 	go test -count=1 -v -cover ./...
 
+server:
+	go run main.go
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc test
+
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc test server
