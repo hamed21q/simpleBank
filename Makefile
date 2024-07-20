@@ -1,5 +1,5 @@
 postgres:
-	docker run --name postgres14 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=1qaz -d focker.ir/postgres:12-alpine
+	docker run --name postgres14 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=1qaz -d postgres:14
 
 createdb:
 	docker exec -it postgres14 createdb --username=root --owner=root simple_bank
@@ -22,5 +22,8 @@ test:
 server:
 	go run main.go
 
+mock:  
+	mockgen -destination db/mock/store.go -package mockdb github.com/techschool/simplebank/db/sqlc Store
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc test server
+
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc test server mock
